@@ -13,7 +13,7 @@ typedef signed int s32;
 typedef signed long s64;
 typedef signed long long s128;
 
-enum {
+typedef enum {
 	False = 0,
 	True
 }Bool;
