@@ -3,7 +3,7 @@
 DIO_Status config[total_pins] =
 {
 		INFREE, //pinA0 - ADC0
-		OUTPUT, //pinA1 - ADC1
+		INFREE, //pinA1 - ADC1
 		OUTPUT, //pinA2 - ADC2
 		OUTPUT, //pinA3 - ADC3
 		OUTPUT, //pinA4 - ADC4
