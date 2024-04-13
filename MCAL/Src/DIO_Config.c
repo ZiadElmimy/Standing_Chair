@@ -32,6 +32,6 @@ DIO_Status config[total_pins] =
 		OUTPUT, //pinD3
 		OUTPUT, //pinD4
 		OUTPUT, //pinD5
-	    INFREE, //pinD6
+	    OUTPUT, //pinD6
 		OUTPUT  //pinD7
 };

@@ -5,7 +5,11 @@ void (*p_cmp)(void);
 void (*p_ovf1)(void);
 void (*p_cmp1A)(void);
 void (*p_cmp1B)(void);
-void (*p_ICU1) (void);
+void (*p_ICU1)(void);
+void (*p_ovf2)(void);
+void (*p_cmp2)(void);
+
+/**********************************TIMER 0******************************/
 
 void Timer00_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output output)
 {
@@ -18,7 +22,7 @@ void Timer00_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output 
 			break;
 		case PhaseCorrect_Mode:
 		    TCCR0 &= ~(1<<WGM01);
-			TCCR0 &= ~(1<<WGM00);
+			TCCR0 |= (1<<WGM00);
 			break;
 		case CTC_Mode:
 		    TCCR0 |= (1<<WGM01);
@@ -66,12 +70,12 @@ void Timer00_OVF_Disable()
 	TIMSK &= ~(1<<TOIE0);
 }
 
-void TImer00_CMP_Enable()
+void Timer00_CMP_Enable()
 {
 	TIMSK |= (1<<OCIE0);
 }
 
-void TImer00_CMP_Disable()
+void Timer00_CMP_Disable()
 {
 	TIMSK &= ~(1<<OCIE0);
 }
@@ -99,7 +103,7 @@ ISR(TIMER0_COMP_Vector)
 	p_cmp();
 }
 
-
+/**********************************TIMER 1******************************/
 
 void Timer01_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output out_A,Timer_Output out_B)
 {
@@ -270,4 +274,97 @@ ISR(TIMER1_COMB_Vector)
 ISR(TIMER1_CAP_Vector)
 {
 	p_ICU1();
+}
+
+/**********************************TIMER 2******************************/
+void Timer02_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output output)
+{
+	// choose the mode of timer 2
+	switch(mode)
+	{
+		case Normal_Mode:
+		    TCCR2 &= ~(1<<WGM21);
+			TCCR2 &= ~(1<<WGM20);
+			break;
+		case PhaseCorrect_Mode:
+		    TCCR2 &= ~(1<<WGM21);
+			TCCR2 |= (1<<WGM20);
+			break;
+		case CTC_Mode:
+		    TCCR2 |= (1<<WGM21);
+			TCCR2 &= ~(1<<WGM20);
+			break;
+		case FastPWM_Mode:
+		    TCCR2 |= (1<<WGM21);
+			TCCR2 |= (1<<WGM20);
+			break;
+	}
+
+	// choose the output mode of timer 2
+	switch(output)
+	{
+		case Normal:
+		    TCCR2 &= ~(1<<COM21);
+			TCCR2 &= ~(1<<COM20);
+			break;
+		case Toggle:
+		    TCCR2 &= ~(1<<COM21);
+			TCCR2 |= (1<<COM20);
+			break;
+		case Clear:
+		    TCCR2 |= (1<<COM21);
+			TCCR2 &= ~(1<<COM20);
+			break;
+		case Set:
+		    TCCR2 |= (1<<COM21);
+			TCCR2 |= (1<<COM20);
+			break;
+	}
+
+	// set the pre-scaler
+    TCCR2 &= 0xF8;
+    TCCR2 |= scaler;
+}
+
+void Timer02_OVF_Enable()
+{
+	TIMSK |= (1 << TOIE2);
+}
+
+void Timer02_OVF_Disable()
+{
+	TIMSK &= ~(1 << TOIE2);
+}
+
+void Timer02_CMP_Enable()
+{
+	TIMSK |= (1 << OCIE2);
+}
+
+void Timer02_CMP_Disable()
+{
+	TIMSK &= ~(1 << OCIE2);
+}
+
+void Timer02_SetCallBack(Timer2_Interrupt inter, void  (*p_fun)(void))
+{
+	switch(inter)
+	{
+	case OVF02_Interrupt:
+		p_ovf2 = p_fun;
+		break;
+	case CMP02_Interrupt:
+		p_cmp2 = p_fun;
+		break;
+	}
+}
+
+ISR(TIMER2_OVF_Vector)
+{
+	p_ovf2();
+}
+
+ISR(TIMER2_COMP_Vector)
+{
+	p_cmp2();
 }

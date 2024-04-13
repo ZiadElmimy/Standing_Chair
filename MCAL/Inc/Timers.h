@@ -47,11 +47,16 @@ typedef enum{
 	   Falling_Edge
     }Timer1_ICU_Edge;
 
+typedef enum{
+       OVF02_Interrupt,
+       CMP02_Interrupt
+    }Timer2_Interrupt;
+
 void Timer00_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output output);		
 void Timer00_OVF_Enable();
 void Timer00_OVF_Disable();
-void TImer00_CMP_Enable();
-void TImer00_CMP_Disable();
+void Timer00_CMP_Enable();
+void Timer00_CMP_Disable();
 void Timer00_SetCallBack(Timer0_Interrupt inter, void  (*p_fun)(void));
 
 void Timer01_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output out_A,Timer_Output out_B);
@@ -65,4 +70,13 @@ void Timer01_ICU_Enable();
 void Timer01_ICU_Disable();
 void TImer01_ICU_TriggerEdge(Timer1_ICU_Edge edge);
 void Timer01_SetCallBack(Timer1_Interrupt inter, void (*p_fun)(void));
+
+void Timer02_Initialization(Timer_Mode mode,Timer_PreScaler scaler,Timer_Output output);
+void Timer02_OVF_Enable();
+void Timer02_OVF_Disable();
+void Timer02_CMP_Enable();
+void Timer02_CMP_Disable();
+void Timer02_SetCallBack(Timer2_Interrupt inter, void  (*p_fun)(void));
+
+
 #endif /* TIMERS_H_ */

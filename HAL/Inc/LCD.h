@@ -11,10 +11,10 @@
 #if(LCD_mode == _8_bit_mode)
 #define LCD_port PA
 #elif(LCD_mode == _4_bit_mode)
-#define data_0   PinB0
-#define data_1   PinB1
-#define data_2   PinB2
-#define data_3   PinB3
+#define data_0   PinA4
+#define data_1   PinA5
+#define data_2   PinA6
+#define data_3   PinA7
 #endif
 
 void LCD_initialization(void);
@@ -25,6 +25,7 @@ void LCD_WriteChar(u8 data);
 void LCD_WriteString(u8 *str);
 void LCD_WriteNum(s64 num);
 void LCD_WriteNum_5D(u16 num);
+void LCD_WriteNum_4D(u16 num);
 void LCD_WriteNum_Binary(u16 num);
 
 #endif /* LCD_H_ */

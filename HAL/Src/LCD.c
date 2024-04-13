@@ -160,6 +160,14 @@ void LCD_WriteNum_5D(u16 num)
 	LCD_WriteData(((num%10)/1)+'0');
 }
 
+void LCD_WriteNum_4D(u16 num)
+{
+	LCD_WriteData(((num%10000)/1000)+'0');
+	LCD_WriteData(((num%1000)/100)+'0');
+	LCD_WriteData(((num%100)/10)+'0');
+	LCD_WriteData(((num%10)/1)+'0');
+}
+
 void LCD_WriteNum_Binary(u16 num)
 {
 	u8 rem = 0, arr[16] = {0}, i = 0;
