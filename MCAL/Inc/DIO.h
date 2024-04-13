@@ -1,6 +1,6 @@
 #ifndef DIO_H_
 #define DIO_H_
-#include "Standard_Types.h"
+#include "../../Standard_Types.h"
 #include "Memory_Map.h"
 
 typedef enum{

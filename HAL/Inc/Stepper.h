@@ -1,6 +1,6 @@
 #ifndef STEPPER_H_
 #define STEPPER_H_
-#include "DIO.h"
+#include "../../MCAL/Inc/DIO.h"
 
 #define IN_1  PinC4
 #define IN_2  PinC5

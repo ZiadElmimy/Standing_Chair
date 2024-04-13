@@ -1,4 +1,5 @@
-#include "ADC.h"
+#include "../Inc/ADC.h"
+#include "../../Standard_Types.h"
 
 void ADC_Initialization(ADC_Reference reference, ADC_PreScaler scaler)
 {

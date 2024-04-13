@@ -1,4 +1,5 @@
-#include "DIO.h"
+#include "../Inc/DIO.h"
+#include "../../Standard_Types.h"
 
 void DIO_PinInitialization(DIO_Pin pin, DIO_Status status)
 {

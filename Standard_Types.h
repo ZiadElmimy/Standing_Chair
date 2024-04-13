@@ -12,6 +12,7 @@ typedef signed short s16;
 typedef signed int s32;
 typedef signed long s64;
 typedef signed long long s128;
+typedef double f64  ;
 
 enum {
 	False = 0,

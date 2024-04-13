@@ -1,6 +1,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
-#include "Stepper.h"
+#include "../Inc/Stepper.h"
 
 void Forward_move(void)
 {
