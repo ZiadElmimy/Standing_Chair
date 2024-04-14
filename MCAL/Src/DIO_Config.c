@@ -1,4 +1,4 @@
-#include "DIO.h"
+#include "../Inc/DIO.h"
 
 DIO_Status config[total_pins] =
 {

@@ -1,5 +1,5 @@
 #include <util/delay.h>
-#include "LCD.h"
+#include "../Inc/LCD.h"
 
 #if(LCD_mode == _8_bit_mode)
 void LCD_WriteCommand(u8 command)

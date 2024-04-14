@@ -1,6 +1,6 @@
 #ifndef ADC_H_
 #define ADC_H_
-#include "Standard_Types.h"
+#include "../../Standard_Types.h"
 #include "Memory_Map.h"
 
 typedef enum{

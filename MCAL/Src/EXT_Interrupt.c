@@ -1,4 +1,5 @@
-#include "EXT_Interrupt.h"
+#include "../Inc/EXT_Interrupt.h"
+#include "../../Standard_Types.h"
 
 void (*INT0_p)(void);
 void (*INT1_p)(void);

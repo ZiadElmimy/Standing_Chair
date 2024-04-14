@@ -1,6 +1,6 @@
 #ifndef LCD_H_
 #define LCD_H_
-#include "DIO.h"
+#include "../../MCAL/Inc/DIO.h"
 
 #define _8_bit_mode  0
 #define _4_bit_mode  1
