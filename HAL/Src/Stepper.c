@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
-#include "Stepper.h"
+#include "../Inc/Stepper.h"
+
 
 void Forward_move(void)
 {
@@ -77,4 +78,22 @@ void Backward_rounds(u8 rounds)
 	{
 		Backward_move();
 	}
+}
+
+back_motor_move(void)
+{
+	DIO_Voltage B1_value =DIO_ReadPin(PinB1);
+	DIO_Voltage B2_value =DIO_ReadPin(PinB2);
+
+	if (B1_value ==1 && B2_value!=1)
+	{
+		forward_angle(45);
+	}
+	if (B1_value !=1&&B2_value==1)
+	{
+		backword_angle(45);
+
+	}
+
+
 }

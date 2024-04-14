@@ -1,9 +1,9 @@
 #include "Standard_Types.h"
-#include "Memory_Map.h"
-#include "DIO.h"
-#include "EXT_Interrupt.h"
-#include "ADC.h"
-#include "Timers.h"
+#include "MCAL/Inc/Memory_Map.h"
+#include "MCAL/Inc/DIO.h"
+#include "MCAL/Inc/EXT_Interrupt.h"
+#include "MCAL/Inc/ADC.h"
+#include "MCAL/Inc/Timers.h"
 
 /*defining the pins for joystick*/
 #define X_DIR         PinA0
