@@ -6,7 +6,9 @@
  */
 
 #include "../Inc/ENCODER.h"
+
 #include "../../MCAL/Inc/Timers.h"
+
 
 //  ************************[NOTE]code for one encoder **********************
 
@@ -54,9 +56,6 @@ void ENCODER_voidInit(void)
 
 }
 
-
-
-
 // Interrupt service routine (for encoder pulse)
 void ENCODER_voidInterruptHandler(void) {
   encoder_count++;
@@ -68,5 +67,4 @@ void ENCODER_voidInterruptHandler(void) {
 void TIMER0_OVF_f(void) {
   timer0_overflows++;
 }
-
 
