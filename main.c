@@ -4,6 +4,9 @@
 #include "MCAL/Inc/EXT_Interrupt.h"
 #include "MCAL/Inc/ADC.h"
 #include "MCAL/Inc/Timers.h"
+#include "HAL/Inc/Stepper.h"
+#include "HAL/Inc/ENCODER.h"
+
 
 /*defining the pins for joystick*/
 #define X_DIR         PinA0
@@ -109,6 +112,8 @@ int main()
 			OCR0 = 0;
 			OCR2 = 255;
 		}
+		
+		back_motor_move();
 	}
 	return 0;
 }
